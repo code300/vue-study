@@ -10,11 +10,11 @@
     <ul class="course-list" v-else>
       <li
         v-for="item in courses"
-        :key="item"
-        :style="{ backgroundColor: selected === item ? '#ddd' : '' }"
-        @click="selected = item"
+        :key="item.name"
+        :style="{ backgroundColor: selected === item.name ? '#ddd' : '' }"
       >
-        {{ item }}
+        {{ item.name }}:{{item.price}}￥
+        <button @click="courseDel(item)">删除</button>
       </li>
     </ul>
   </div>
@@ -37,6 +37,12 @@ export default {
         return [];
       },
     },
+  },
+  methods: {
+    courseDel(item) {
+      // this.selected = item.name
+      this.$emit('course-del',item)
+    }
   },
 };
 </script>

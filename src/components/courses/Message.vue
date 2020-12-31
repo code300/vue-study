@@ -30,13 +30,25 @@ export default {
       default: ''
     }
   },
+  mounted () {
+    this.$bus.$on('message-close',()=>{
+      this.$emit('update:show',false)
+    });
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .message-box{
-  background-color: cadetblue;
+  // background-color: cadetblue;
  
   margin: 0 auto
 }
+.success{
+  background: #4fc08d;
+}
+.warning{
+  background: #f66;
+}
+
 </style>
