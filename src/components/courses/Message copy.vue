@@ -1,12 +1,6 @@
 <template>
   <div>
-    <transition
-      name="fade"
-      @before-enter="beforeEnter"
-      @enter="enter"
-      @before-leave="beforeLeave"
-      @leave="leave"
-    >
+    <transition name="fade">
       <div class="message-box" v-if="show">
         <!-- 作用域插槽（可从子组件获取内容） -->
         <!-- <slot name="title" title="作用域插槽">默认内容</slot> -->
@@ -22,7 +16,6 @@
 </template>
 
 <script>
-import Velocity from 'velocity-animate'
 export default {
   data() {
     return {
@@ -44,32 +37,6 @@ export default {
     toggle() {
       this.show = !this.show;
     },
-    beforeEnter(el) {
-      //动画结束状态
-      el.style.opacity = 0;
-    },
-    enter(el, done) {
-      
-      // //触发浏览器回流激活动画---重排
-      // document.body.offsetHeight;
-      // //动画结束状态
-      // el.style.opacity = 1;
-      // el.addEventListener("transitionend",done)
-      Velocity(el, { opacity: 1 }, { duration: 500, complete: done })
-    },
-    beforeLeave(el) {
-      //动画结束状态
-      el.style.opacity = 1;
-    },
-    leave(el, done) {
-      
-      //触发浏览器回流激活动画---重排
-      // document.body.offsetHeight;
-      // //动画结束状态
-      // el.style.opacity = 0;
-      // el.addEventListener("transitionend",done)
-      Velocity(el, { opacity: 0 }, { duration: 500, complete: done })
-    },
   },
 };
 </script>
@@ -85,5 +52,11 @@ export default {
 }
 .warning {
   background: #f66;
+}
+.fade-enter,.fade-leave-to{
+  opacity: 0;
+}
+.fade-enter-active,.fade-leave-active{
+  transition: opacity 1.5s;
 }
 </style>

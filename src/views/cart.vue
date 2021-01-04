@@ -1,35 +1,32 @@
 <template>
   <div class="cart">
-  
-    <Message class="success" ref="msgSuccess">
-      
-      <!-- <template v-slot:title="slotProps">
+    
+      <Message class="success" ref="msgSuccess">
+        <!-- <template v-slot:title="slotProps">
         <strong>{{slotProps.title}}</strong>
       </template> -->
-      
-      <template v-slot:title>
-        <strong>{{ title }}</strong>
-      </template>
-      
-      <template v-slot:default>
-        {{ msg }}
-      </template>
-    </Message>
 
-    <Message class="warning" ref="msgWarning">
-     
-      <!-- <template v-slot:title="slotProps">  
+        <template v-slot:title>
+          <strong>{{ title }}</strong>
+        </template>
+
+        <template v-slot:default>
+          {{ msg }}
+        </template>
+      </Message>
+    
+      <Message class="warning" ref="msgWarning">
+        <!-- <template v-slot:title="slotProps">  
         <strong>{{slotProps.title}}</strong>
       </template> -->
-      
-      <template v-slot:title>
-        <strong>警告！</strong>
-      </template>
-      
-      <template v-slot:default> 请输入课程名称 </template>
-    </Message>
 
+        <template v-slot:title>
+          <strong>警告！</strong>
+        </template>
 
+        <template v-slot:default> 请输入课程名称 </template>
+      </Message>
+   
     <!-- toolbar -->
     <div class="toolbar">
       <button @click="$bus.$emit('message-close')">清空提示框</button>
@@ -85,9 +82,9 @@ export default {
         this.courses.push({ name: this.course, price: 0 });
         // 2.清空数组
         this.course = "";
-        this.$refs.msgSuccess.toggle()
+        this.$refs.msgSuccess.toggle();
       } else {
-        this.$refs.msgWarning.toggle()
+        this.$refs.msgWarning.toggle();
       }
     },
     courseDel(item) {
@@ -148,4 +145,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 </style>

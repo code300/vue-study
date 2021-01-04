@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import Velocity from 'velocity-animate'
 export default {
   data() {
     return {
@@ -50,12 +49,11 @@ export default {
     },
     enter(el, done) {
       
-      // //触发浏览器回流激活动画---重排
-      // document.body.offsetHeight;
-      // //动画结束状态
-      // el.style.opacity = 1;
-      // el.addEventListener("transitionend",done)
-      Velocity(el, { opacity: 1 }, { duration: 500, complete: done })
+      //触发浏览器回流激活动画---重排
+      document.body.offsetHeight;
+      //动画结束状态
+      el.style.opacity = 1;
+      el.addEventListener("transitionend",done)
     },
     beforeLeave(el) {
       //动画结束状态
@@ -64,11 +62,10 @@ export default {
     leave(el, done) {
       
       //触发浏览器回流激活动画---重排
-      // document.body.offsetHeight;
-      // //动画结束状态
-      // el.style.opacity = 0;
-      // el.addEventListener("transitionend",done)
-      Velocity(el, { opacity: 0 }, { duration: 500, complete: done })
+      document.body.offsetHeight;
+      //动画结束状态
+      el.style.opacity = 0;
+      el.addEventListener("transitionend",done)
     },
   },
 };
