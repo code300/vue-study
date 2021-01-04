@@ -1,7 +1,7 @@
 <template>
   <div class="cart">
   
-    <Message class="success" ref="msgSuccess">
+    <Message :show.sync="show" class="success">
       
       <!-- <template v-slot:title="slotProps">
         <strong>{{slotProps.title}}</strong>
@@ -16,7 +16,7 @@
       </template>
     </Message>
 
-    <Message class="warning" ref="msgWarning">
+    <Message :show.sync="showWarn" class="warning">
      
       <!-- <template v-slot:title="slotProps">  
         <strong>{{slotProps.title}}</strong>
@@ -85,9 +85,9 @@ export default {
         this.courses.push({ name: this.course, price: 0 });
         // 2.清空数组
         this.course = "";
-        this.$refs.msgSuccess.toggle()
+        this.show = true;
       } else {
-        this.$refs.msgWarning.toggle()
+        this.showWarn = true;
       }
     },
     courseDel(item) {

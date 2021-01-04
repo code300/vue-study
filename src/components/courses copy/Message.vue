@@ -8,7 +8,7 @@
       <!-- 通过slot获取插槽内容 -->
       <slot></slot>
       <!-- 自定义事件处理必须为update:show -->
-      <span class="message-box-close" @click="toggle">X</span>
+      <span class="message-box-close" @click="$emit('update:show',false)">X</span>
     </div>
   </div>
 </template>
@@ -17,10 +17,14 @@
 export default {
   data() {
     return {
-      show: false
+      
     }
   },
   props: {
+    show: {
+      type: Boolean,
+      default: false
+    },
     msg:{
       type: String,
       default: ''
@@ -28,13 +32,8 @@ export default {
   },
   mounted () {
     this.$bus.$on('message-close',()=>{
-      this.toggle()
+      this.$emit('update:show',false)
     });
-  },
-  methods: {
-    toggle() {
-      this.show = !this.show
-    }
   },
 };
 </script>
